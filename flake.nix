@@ -15,8 +15,6 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     # Hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    # Nix User Repository
-    nur.url = "github:nix-community/NUR";
     # Impermanance
     impermanence.url = "github:nix-community/impermanence";
     # Disko
@@ -27,19 +25,7 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = { self, nixpkgs, home-manager, nix-darwin, agenix, ... }@inputs: 
-    let
-      inherit (self) outputs;
-      lib = nixpkgs.lib // home-manager.lib;
-      systems = [ "x86_64-linux" "aarch64-linux" ];
-      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-      pkgsFor = lib.genAttrs systems (system: import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      });
-    in
   {
-    inherit lib;
-    packages = forEachSystem (pkgs: import ./packages { inherit pkgs; });
     overlays = import ./modules/overlays {inherit inputs;};
 ### Host outputs
     # NixOS configuration entrypoint

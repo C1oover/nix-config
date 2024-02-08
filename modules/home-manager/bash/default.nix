@@ -18,6 +18,7 @@ in
       bash = {
         enable = true;
         enableCompletion = true;
+        #shared bashrc
         profileExtra = ''
         # Commands that should be applied only for interactive shells.
         [[ $- == *i* ]] || return
