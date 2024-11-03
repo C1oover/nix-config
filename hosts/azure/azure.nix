@@ -37,19 +37,6 @@
         basics.enable = true;
         foundation.enable = true;
       };
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
-      boot.initrd.network.enable = true;
-      boot.initrd.network.ssh = {
-        enable = true;
-        port = 22;
-        shell = "/bin/cryptsetup-askpass";
-        authorizedKeys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUdKeCY7RoiO8r3v7TCNN27gExT7T2Rb6Fo3LwXxteKKi0sObIShy/UQuYAe3sY5xPLKHTSKQKab3t9B2jyuYTHTs6CLCKzkBb5hKmDfWIS0Rxfr/OsVYMp1ElIm6xQRLURJ9A71BFDwQrEwGqzsPMtKcZirXFcPuGtV9Sr6gcyt8bfK8AdJopbflkFDg3VVPyIFmi5PEkjUBGJOpYpjOYo6Mt9Zpja/WSbUwrnTDJ3pKWk99kRmUxlwV+sh1zEW+bQXtCWI4YIWUm0iESyzZASb6LMw3FfsVdbTSplmiW+YOb0VJSHb31gQoFSsRc9oM4gHeKnU+26/HyvPNOU/Yh ssh-key-2024-11-02"];
-        hostKeys = [ "/etc/ssh/initrd" ];
-      };
-      boot.initrd.secrets = {
-        "/etc/ssh/initrd" = "/etc/ssh/initrd";
-      };
       # disk configuration
       #disks = {
       #  enable = true;
@@ -67,6 +54,19 @@
       #    };
       #  };
       #};
+    };
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
+    boot.initrd.network.enable = true;
+    boot.initrd.network.ssh = {
+    enable = true;
+      port = 22;
+      shell = "/bin/cryptsetup-askpass";
+      authorizedKeys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUdKeCY7RoiO8r3v7TCNN27gExT7T2Rb6Fo3LwXxteKKi0sObIShy/UQuYAe3sY5xPLKHTSKQKab3t9B2jyuYTHTs6CLCKzkBb5hKmDfWIS0Rxfr/OsVYMp1ElIm6xQRLURJ9A71BFDwQrEwGqzsPMtKcZirXFcPuGtV9Sr6gcyt8bfK8AdJopbflkFDg3VVPyIFmi5PEkjUBGJOpYpjOYo6Mt9Zpja/WSbUwrnTDJ3pKWk99kRmUxlwV+sh1zEW+bQXtCWI4YIWUm0iESyzZASb6LMw3FfsVdbTSplmiW+YOb0VJSHb31gQoFSsRc9oM4gHeKnU+26/HyvPNOU/Yh ssh-key-2024-11-02"];
+      hostKeys = [ "/etc/ssh/initrd" ];
+    };
+    boot.initrd.secrets = {
+      "/etc/ssh/initrd" = "/etc/ssh/initrd";
     };
   };
 }
