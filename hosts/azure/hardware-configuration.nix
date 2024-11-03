@@ -10,15 +10,16 @@
 }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
 
   boot.initrd.availableKernelModules = [
+    "xhci_pci" 
+    "virtio_scsi" 
     "nvme"
-    "xhci_pci"
     "ahci"
     "usbhid"
     "usb_storage"
     "sd_mod"
   ];
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }

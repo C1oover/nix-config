@@ -23,7 +23,7 @@ in
     hashedPassword = null;
     # Set authorized keys to authenticate to ssh as admin user
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHYSJ9ywFRJ747tkhvYWFkx/Y9SkLqv3rb7T1UuXVBWo"
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUdKeCY7RoiO8r3v7TCNN27gExT7T2Rb6Fo3LwXxteKKi0sObIShy/UQuYAe3sY5xPLKHTSKQKab3t9B2jyuYTHTs6CLCKzkBb5hKmDfWIS0Rxfr/OsVYMp1ElIm6xQRLURJ9A71BFDwQrEwGqzsPMtKcZirXFcPuGtV9Sr6gcyt8bfK8AdJopbflkFDg3VVPyIFmi5PEkjUBGJOpYpjOYo6Mt9Zpja/WSbUwrnTDJ3pKWk99kRmUxlwV+sh1zEW+bQXtCWI4YIWUm0iESyzZASb6LMw3FfsVdbTSplmiW+YOb0VJSHb31gQoFSsRc9oM4gHeKnU+26/HyvPNOU/Yh ssh-key-2024-11-02"
     ];
     shell = pkgs.zsh;
     extraGroups = [

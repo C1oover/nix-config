@@ -57,6 +57,7 @@
         # systems for which you want to build the `perSystem` attributes
         "x86_64-linux"
         "aarch64-darwin"
+        "aarch64-linux"
       ];
       imports = [ inputs.devenv.flakeModule ];
       perSystem =
@@ -81,76 +82,18 @@
         # NixOS configuration entrypoint
         # Available through 'nixos-rebuild switch --flake .#your-hostname'
         nixosConfigurations = {
-          blue = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [ ./hosts/blue ];
-          };
           azure = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
+            system = "aarch64-linux";
             specialArgs = {
               inherit inputs;
             };
             modules = [ ./hosts/azure ];
           };
-          carob = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [ ./hosts/carob ];
-          };
-          teal = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [ ./hosts/teal ];
-          };
-          smalt = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [ ./hosts/smalt ];
-          };
-          # green = nixpkgs.lib.nixosSystem {
-          #   system = "x86_64-linux";
-          #   specialArgs = { inherit inputs; }; 
-          #   modules = [ ./hosts/green ];
-          # };
-          pearl = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [ ./hosts/pearl ];
-          };
-          wsl = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [ ./hosts/wsl ];
-          };
-        };
-        # Nix-darwin configuration entrypoint
-        # Available through 'darwin-rebuild switch --flake .#your-hostname'
-        darwinConfigurations = {
-          midnight = nix-darwin.lib.darwinSystem {
-            specialArgs = {
-              inherit inputs;
-            };
-            system = "aarch64-darwin";
-            modules = [ ./hosts/midnight ];
-          };
         };
         # Standalone home-manager configuration entrypoint
         # Available through 'home-manager --flake .#your-username@your-hostname'
         homeConfigurations = {
-          "carln@hostname" = home-manager.lib.homeManagerConfiguration {
+          "cloover@hostname" = home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.x86_64-linux;
             extraSpecialArgs = {
               inherit inputs;

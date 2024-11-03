@@ -18,8 +18,8 @@
   programs = {
     git = {
       enable = true;
-      userEmail = "yomaq@bsjm.xyz";
-      userName = "yomaq";
+      userEmail = "elias.reimoser@gmail.com";
+      userName = "C1oover";
     };
   };
   yomaq = {
